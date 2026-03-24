@@ -1,0 +1,101 @@
+<%- include('./partials/header') %>
+
+<% if(added.length > 0){ %>
+  <div id="flash-msg"
+       class="fixed top-10 left-1/2 -translate-x-1/2 bg-green-600 text-white px-5 py-2 rounded shadow-lg z-50 transition">
+    <%= added %>
+  </div>
+
+  <script>
+    setTimeout(() => {
+      const msg = document.getElementById('flash-msg');
+      if(msg){
+        msg.style.opacity = '0';
+        setTimeout(() => msg.remove(), 500);
+      }
+    }, 2000); // disappears after 2 sec
+  </script>
+<% } %>
+
+<div class="w-full flex justify-center mt-10">
+
+  <!-- MAIN CONTAINER -->
+  <div class="w-[90%] flex gap-10">
+
+    <!-- ✅ SIDEBAR -->
+    <div class="w-[18%] text-sm">
+
+      <div class="mb-8">
+        <h3 class="font-semibold mb-2">Sort By</h3>
+        <form action="/shop">
+          <select class="border px-2 py-1 rounded w-full" name="sortby">
+            <option value="popular">Popular</option>
+            <option value="newest">Newest</option>
+          </select>
+        </form>
+      </div>
+
+      <div class="mb-8">
+        <h3 class="font-semibold mb-2">Categories</h3>
+        <p class="mb-1 cursor-pointer hover:text-gray-600">New Collection</p>
+        <p class="mb-1 cursor-pointer hover:text-gray-600">All Products</p>
+        <p class="mb-1 cursor-pointer hover:text-gray-600">Discounted</p>
+      </div>
+
+      <div>
+        <h3 class="font-semibold mb-2">Filters</h3>
+        <p class="mb-1 cursor-pointer hover:text-gray-600">Availability</p>
+        <p class="mb-1 cursor-pointer hover:text-gray-600">Discount</p>
+      </div>
+
+    </div>
+
+    <!-- ✅ PRODUCTS (FIXED GRID) -->
+    <div class="w-[82%]">
+
+      <div class="grid grid-cols-3 gap-8">
+
+        <% products.forEach(function(product){ %>
+
+        <div class="bg-white rounded-md overflow-hidden shadow-sm hover:shadow-md transition">
+
+          <!-- IMAGE -->
+          <a href="/product/<%= product._id %>">
+            <div class="w-full h-48 flex items-center justify-center bg-[<%= product.bgcolor %>]">
+              <img class="h-[11rem] object-contain"
+                   src="data:image/jpeg;base64,<%= product.image.toString('base64') %>">
+            </div>
+          </a>
+
+          <!-- DETAILS -->
+          <div class="flex justify-between items-center px-3 py-3 bg-[<%= product.panelcolor %>] text-[<%= product.textcolor %>]">
+
+            <div>
+              <h3 class="text-sm font-medium"><%= product.name %></h3>
+              <h4 class="text-sm">₹ <%= product.price %></h4>
+
+              <% if(product.discount > 0){ %>
+                <p class="text-xs text-red-500">Save ₹<%= product.discount %></p>
+              <% } %>
+            </div>
+
+            <a class="w-7 h-7 flex items-center justify-center rounded-full bg-white hover:bg-gray-200"
+               href="/addtocart/<%=product._id%>">
+              +
+            </a>
+
+          </div>
+
+        </div>
+
+        <% }) %>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<%- include('./partials/footer') %>

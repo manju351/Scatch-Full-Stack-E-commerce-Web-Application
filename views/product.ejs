@@ -1,0 +1,48 @@
+<%- include('./partials/header') %>
+
+<div class="w-full flex px-20 py-10 gap-10">
+
+  <div class="w-[40%] bg-[<%= product.bgcolor %>] flex justify-center items-center rounded-lg">
+    <img class="h-[20rem]" src="data:image/jpeg;base64,<%= product.image.toString('base64') %>">
+  </div>
+
+
+  <div class="w-[60%] flex flex-col gap-4">
+
+    <h1 class="text-3xl font-bold"><%= product.name %></h1>
+
+   
+    <div class="text-xl">
+      <span class="font-semibold">₹<%= product.price %></span>
+      <span class="text-red-500 ml-3">-₹<%= product.discount %></span>
+    </div>
+
+   
+    <div class="text-yellow-500">
+      <% for(let i=0; i<product.rating; i++){ %>
+        ⭐
+      <% } %>
+    </div>
+
+    <div>
+      <% if(product.stock > 0){ %>
+        <span class="text-green-600">In Stock</span>
+      <% } else { %>
+        <span class="text-red-600">Out of Stock</span>
+      <% } %>
+    </div>
+
+    <p class="text-gray-600">
+      <%= product.description || "No description available" %>
+    </p>
+
+    <a href="/addtocart/<%= product._id %>"
+       class="w-40 text-center bg-green-600 text-white py-3 rounded-lg hover:bg-green-700">
+       Add to Cart
+    </a>
+
+  </div>
+
+</div>
+
+<%- include('./partials/footer') %>
