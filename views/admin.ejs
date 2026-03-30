@@ -1,113 +1,82 @@
-<%- include('./partials/header') %>
-    <div class="w-full h-screen flex items-start px-20 py-20">
-        <div class="w-[25%] flex h-screen flex-col items-start">
-            <div class="flex flex-col">
-                <a class="block w-fit mb-2" href="">All Products</a>
-                <a class="block w-fit mb-2" href="">Create new product</a>
-            </div>
-        </div>
-        <div class="w-[75%] flex flex-col gap-5 h-screen">
-            <a class="text-red-500" href="">Delete all</a>
-            <div class="flex items-start gap-5">
-                <div class="w-60 bg-red-500">
-                    <div class="w-full h-52 bg-yellow-500"></div>
-                    <div class="flex justify-between items-center px-4 py-4">
-                        <div>
-                            <h3>Clinge Bag</h3>
-                            <h4>₹ 1200</h4>
-                        </div>
-                        <a class="w-7 h-7 flex items-center justify-center rounded-full bg-white" href="">
-                            <i class="ri-add-line"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="w-60 bg-red-500">
-                    <div class="w-full h-52 bg-yellow-500"></div>
-                    <div class="flex justify-between items-center px-4 py-4">
-                        <div>
-                            <h3>Clinge Bag</h3>
-                            <h4>₹ 1200</h4>
-                        </div>
-                        <a class="w-7 h-7 flex items-center justify-center rounded-full bg-white" href="">
-                            <i class="ri-add-line"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="w-60 bg-red-500">
-                    <div class="w-full h-52 bg-yellow-500"></div>
-                    <div class="flex justify-between items-center px-4 py-4">
-                        <div>
-                            <h3>Clinge Bag</h3>
-                            <h4>₹ 1200</h4>
-                        </div>
-                        <a class="w-7 h-7 flex items-center justify-center rounded-full bg-white" href="">
-                            <i class="ri-add-line"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="w-60 bg-red-500">
-                    <div class="w-full h-52 bg-yellow-500"></div>
-                    <div class="flex justify-between items-center px-4 py-4">
-                        <div>
-                            <h3>Clinge Bag</h3>
-                            <h4>₹ 1200</h4>
-                        </div>
-                        <a class="w-7 h-7 flex items-center justify-center rounded-full bg-white" href="">
-                            <i class="ri-add-line"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="flex items-start gap-5">
-                <div class="w-60 bg-red-500">
-                    <div class="w-full h-52 bg-yellow-500"></div>
-                    <div class="flex justify-between items-center px-4 py-4">
-                        <div>
-                            <h3>Clinge Bag</h3>
-                            <h4>₹ 1200</h4>
-                        </div>
-                        <a class="w-7 h-7 flex items-center justify-center rounded-full bg-white" href="">
-                            <i class="ri-add-line"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="w-60 bg-red-500">
-                    <div class="w-full h-52 bg-yellow-500"></div>
-                    <div class="flex justify-between items-center px-4 py-4">
-                        <div>
-                            <h3>Clinge Bag</h3>
-                            <h4>₹ 1200</h4>
-                        </div>
-                        <a class="w-7 h-7 flex items-center justify-center rounded-full bg-white" href="">
-                            <i class="ri-add-line"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="w-60 bg-red-500">
-                    <div class="w-full h-52 bg-yellow-500"></div>
-                    <div class="flex justify-between items-center px-4 py-4">
-                        <div>
-                            <h3>Clinge Bag</h3>
-                            <h4>₹ 1200</h4>
-                        </div>
-                        <a class="w-7 h-7 flex items-center justify-center rounded-full bg-white" href="">
-                            <i class="ri-add-line"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="w-60 bg-red-500">
-                    <div class="w-full h-52 bg-yellow-500"></div>
-                    <div class="flex justify-between items-center px-4 py-4">
-                        <div>
-                            <h3>Clinge Bag</h3>
-                            <h4>₹ 1200</h4>
-                        </div>
-                        <a class="w-7 h-7 flex items-center justify-center rounded-full bg-white" href="">
-                            <i class="ri-add-line"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+<%- include('./partials/admin-header') %>
+
+<div class="w-full flex min-h-screen">
+
+  <!-- 🔥 SIDEBAR -->
+  <div class="w-[20%] bg-gray-900 text-white p-6 flex flex-col gap-6">
+
+    <h2 class="text-2xl font-bold mb-6">Admin Panel</h2>
+
+    <a href="/admin" class="hover:text-gray-300">Dashboard</a>
+    <a href="/admin/products" class="hover:text-gray-300">Products</a>
+    <a href="/admin/orders" class="hover:text-gray-300">Orders</a>
+    <a href="/shop" class="hover:text-gray-300">View Site</a>
+
+  </div>
+
+  <!-- 🔥 MAIN CONTENT -->
+  <div class="w-[80%] p-8 bg-gray-100">
+
+    <h1 class="text-2xl font-semibold mb-6">Dashboard</h1>
+
+    <!-- 🔥 STATS CARDS -->
+    <div class="grid grid-cols-4 gap-6 mb-8">
+
+      <div class="bg-white p-5 rounded shadow">
+        <h3 class="text-gray-500">Products</h3>
+        <p class="text-2xl font-bold"><%= totalProducts %></p>
+      </div>
+
+      <div class="bg-white p-5 rounded shadow">
+        <h3 class="text-gray-500">Orders</h3>
+        <p class="text-2xl font-bold"><%= totalOrders %></p>
+      </div>
+
+      <div class="bg-white p-5 rounded shadow">
+        <h3 class="text-gray-500">Revenue</h3>
+        <p class="text-2xl font-bold">₹<%= totalRevenue %></p>
+      </div>
+
+      <div class="bg-white p-5 rounded shadow">
+        <h3 class="text-gray-500">Users</h3>
+        <p class="text-2xl font-bold"><%= totalUsers %></p>
+      </div>
+
     </div>
-    <%- include('./partials/footer') %>
+
+    <!-- 🔥 RECENT ORDERS -->
+    <div class="bg-white p-6 rounded shadow">
+
+      <h2 class="text-lg font-semibold mb-4">Recent Orders</h2>
+
+      <table class="w-full text-left">
+
+        <thead>
+          <tr class="border-b">
+            <th class="py-2">User</th>
+            <th>Total</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <% recentOrders.forEach(order => { %>
+            <tr class="border-b">
+              <td class="py-2"><%= order.userEmail %></td>
+              <td>₹<%= order.totalAmount %></td>
+              <td><%= new Date(order.date).toDateString() %></td>
+            </tr>
+          <% }) %>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</div>
+
+<%- include('./partials/admin-footer') %>

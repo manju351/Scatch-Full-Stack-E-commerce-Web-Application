@@ -1,0 +1,93 @@
+<%- include('../partials/admin-header') %>
+ 
+<% if(success.length > 0){ %>
+  <div id="flash-msg"
+       class="fixed top-10 left-1/2 -translate-x-1/2 bg-blue-600 text-white px-5 py-2 rounded shadow-lg z-50 transition">
+    <%=success %>
+  </div>
+
+  <script>
+    setTimeout(() => {
+      const msg = document.getElementById('flash-msg');
+      if(msg){
+        msg.style.opacity = '0';
+        setTimeout(() => msg.remove(), 500);
+      }
+    }, 2000); // disappears after 2 sec
+  </script>
+<% } %>
+
+<div class="p-10">
+
+    <div class="flex justify-between items-center mb-6">
+        <h1 class="text-2xl font-bold">All Products</h1>
+
+        <a href="/admin/products/new"
+           class="bg-green-600 text-white px-4 py-2 rounded">
+           + Add Product
+        </a>
+    </div>
+
+    <div class="bg-white rounded-lg shadow overflow-hidden">
+
+        <table class="w-full text-left">
+
+            <thead class="bg-gray-100">
+                <tr>
+                    <th class="p-3">Image</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Stock</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <% products.forEach(function(product){ %>
+
+                <tr class="border-t">
+
+                    <td class="p-3">
+                        <img class="h-12"
+                        src="data:image/jpeg;base64,<%= product.image.toString('base64') %>">
+                    </td>
+
+                    <td><%= product.name %></td>
+
+                    <td>₹ <%= product.price %></td>
+
+                    <td>
+                        <% if(product.stock > 0){ %>
+                            <span class="text-green-600">In Stock</span>
+                        <% } else { %>
+                            <span class="text-red-500">Out</span>
+                        <% } %>
+                    </td>
+
+                    <td class="flex gap-3">
+
+                        <a href="/admin/products/edit/<%= product._id %>"
+                           class="text-blue-500">Edit</a>
+
+                        <a href="/admin/products/delete/<%= product._id %>"
+                           onclick="return confirm('Delete this product?')"
+                           class="text-red-500">
+                           Delete
+                        </a>
+
+                    </td>
+
+                </tr>
+
+                <% }) %>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<%- include('../partials/admin-footer') %>

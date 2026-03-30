@@ -18,10 +18,18 @@
     </div>
 
    
-    <div class="text-yellow-500">
-      <% for(let i=0; i<product.rating; i++){ %>
-        ⭐
-      <% } %>
+    <div class="text-black-500">
+      <% let rating = product.rating || 0; %>
+
+      <div>
+      <% for(let i=1; i<=5; i++){ %>
+      <% if(i <= rating){ %>
+      ⭐
+      <% } else { %>
+      ☆
+     <% } %>
+    <% } %>
+      </div>
     </div>
 
     <div>
@@ -33,7 +41,7 @@
     </div>
 
     <p class="text-gray-600">
-      <%= product.description || "No description available" %>
+      <%= product.description %>
     </p>
 
     <a href="/addtocart/<%= product._id %>"

@@ -1,0 +1,113 @@
+<%- include('./partials/header') %>
+
+<div class="w-[85%] mx-auto mt-10">
+
+  <h1 class="text-2xl font-semibold mb-6">My Orders</h1>
+
+  <% if(orders.length === 0){ %>
+    <p class="text-gray-500">No orders yet 🛒</p>
+  <% } %>
+
+  <% orders.forEach(order => { %>
+
+    <a href="/orders/<%= order.orderId %>">
+
+      <div class="border rounded-xl p-5 mb-5 flex justify-between items-start hover:shadow-lg transition duration-200 bg-white">
+
+        <!-- LEFT SIDE -->
+        <div class="flex flex-col gap-4 w-[70%]">
+
+          <!-- PRODUCTS (SHOW FIRST 2) -->
+          <% order.products.slice(0, 2).forEach(item => { %>
+
+            <div class="flex items-center gap-4">
+
+              <!-- IMAGE -->
+              <% if(item.productId && item.productId.image){ %>
+                <img class="w-16 h-16 object-contain border rounded-md p-1 bg-gray-50"
+                  src="data:image/jpeg;base64,<%= item.productId.image.toString('base64') %>">
+              <% } %>
+
+              <!-- DETAILS -->
+              <div>
+                <p class="font-medium text-gray-800">
+                  <%= item.productId?.name || "Product" %>
+                </p>
+
+                <p class="text-sm text-gray-500">
+                  Qty: <%= item.quantity %>
+                </p>
+              </div>
+
+            </div>
+
+          <% }) %>
+
+          <!-- MORE ITEMS -->
+          <% if(order.products.length > 2){ %>
+            <p class="text-sm text-gray-500">
+              +<%= order.products.length - 2 %> more item(s)
+            </p>
+          <% } %>
+
+          <!-- ORDER INFO -->
+          <div class="text-sm text-gray-500 mt-2">
+            <p>
+              Order ID:
+              <span class="font-medium text-gray-700">
+                <%= order.orderId %>
+              </span>
+            </p>
+
+            <p>
+              <%= new Date(order.orderDate || order.createdAt).toDateString() %>
+            </p>
+          </div>
+
+        </div>
+
+        <!-- RIGHT SIDE -->
+        <div class="text-right flex flex-col items-end gap-3">
+
+          <!-- TOTAL -->
+          <p class="text-lg font-semibold text-green-600">
+            ₹ <%= order.total %>
+          </p>
+
+          <!-- STATUS -->
+          <% let status = order.status || "Pending"; %>
+
+          <span class="
+            px-4 py-1.5 text-sm rounded-full font-medium inline-flex items-center gap-2
+            <%= status === 'Pending' ? 'bg-yellow-100 text-yellow-700' : '' %>
+            <%= status === 'Shipped' ? 'bg-blue-100 text-blue-700' : '' %>
+            <%= status === 'Out for Delivery' ? 'bg-purple-100 text-purple-700' : '' %>
+            <%= status === 'Delivered' ? 'bg-green-100 text-green-700' : '' %>
+            <%= status === 'Cancelled' ? 'bg-red-100 text-red-700' : '' %>
+          ">
+
+            <% if(status === 'Pending'){ %> ⏳ <% } %>
+            <% if(status === 'Shipped'){ %> 🚚 <% } %>
+            <% if(status === 'Out for Delivery'){ %> 📦 <% } %>
+            <% if(status === 'Delivered'){ %> ✅ <% } %>
+            <% if(status === 'Cancelled'){ %> ❌ <% } %>
+
+            <%= status %>
+          </span>
+
+          <!-- VIEW -->
+          <span class="text-blue-600 text-sm font-medium flex items-center gap-1">
+            View Details →
+          </span>
+
+        </div>
+
+      </div>
+
+    </a>
+
+  <% }) %>
+
+</div>
+
+<%- include('./partials/footer') %>

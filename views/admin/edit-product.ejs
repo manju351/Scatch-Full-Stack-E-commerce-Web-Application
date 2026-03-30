@@ -1,0 +1,95 @@
+<%- include('../partials/admin-header') %>
+
+<div class="w-[85%] mx-auto mt-10 flex gap-8">
+
+  <!-- LEFT SIDEBAR -->
+  <div class="w-[20%]">
+    <p class="font-medium mb-3">All Products</p>
+    <a href="/admin/products/new" class="text-blue-600 text-sm">
+      + Create new product
+    </a>
+  </div>
+
+  <!-- MAIN CARD -->
+  <div class="w-[80%] bg-white p-8 rounded-xl shadow">
+
+    <h2 class="text-2xl font-semibold mb-6">Edit Product</h2>
+
+    <form action="/admin/products/edit/<%= product._id %>" method="POST">
+
+  <!-- GRID -->
+  <div class="grid grid-cols-2 gap-6">
+
+    <!-- PRODUCT NAME -->
+    <div>
+      <label class="block text-sm font-medium text-gray-600 mb-1">
+        Product Name
+      </label>
+      <input 
+        name="name" 
+        value="<%= product.name %>" 
+        class="border p-3 rounded-md w-full"
+      >
+    </div>
+
+    <!-- PRICE -->
+    <div>
+      <label class="block text-sm font-medium text-gray-600 mb-1">
+        Product Price (₹)
+      </label>
+      <input 
+        name="price" 
+        value="<%= product.price %>" 
+        class="border p-3 rounded-md w-full"
+      >
+    </div>
+
+    <!-- DISCOUNT -->
+    <div>
+      <label class="block text-sm font-medium text-gray-600 mb-1">
+        Discount
+      </label>
+      <input 
+        name="discount" 
+        value="<%= product.discount %>" 
+        class="border p-3 rounded-md w-full"
+      >
+    </div>
+
+    <!-- STOCK -->
+    <div>
+      <label class="block text-sm font-medium text-gray-600 mb-1">
+        Stock Quantity
+      </label>
+      <input 
+        name="stock" 
+        value="<%= product.stock %>" 
+        class="border p-3 rounded-md w-full"
+      >
+    </div>
+
+  </div>
+
+  <!-- DESCRIPTION -->
+  <div class="mt-5">
+    <label class="block text-sm font-medium text-gray-600 mb-1">
+      Product Description
+    </label>
+    <textarea 
+      name="description"
+      class="border p-3 rounded-md w-full h-28"
+    ><%= product.description %></textarea>
+  </div>
+
+  <!-- BUTTON -->
+  <button class="mt-6 bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition">
+    Update Product
+  </button>
+
+</form>
+
+  </div>
+
+</div>
+
+<%- include('../partials/admin-footer') %>

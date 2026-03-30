@@ -1,5 +1,28 @@
 <%- include('./partials/header') %>
 
+<% if(user.cart.length === 0){ %>
+
+<!-- EMPTY CART UI -->
+
+<div class="w-full h-[80vh] flex flex-col items-center justify-center text-center">
+
+  <img src="https://cdn-icons-png.flaticon.com/512/2038/2038854.png"
+       class="w-40 mb-6 opacity-80">
+
+  <h2 class="text-2xl font-semibold mb-2">Your cart is empty 🛒</h2>
+
+  <p class="text-gray-500 mb-6">
+    Looks like you haven't added anything yet.
+  </p>
+
+  <a href="/shop"
+     class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700">
+     Continue Shopping
+  </a>
+
+</div>
+
+<% } else { %>
 <div class="w-full flex px-20 py-10 gap-10">
 
   <!-- LEFT SIDE: PRODUCTS -->
@@ -39,14 +62,35 @@
 
       </div>
 
-      <!-- SMALL DETAILS -->
+      
       <div class="w-[60%] flex flex-col justify-center">
+     <p class="text-gray-600">
+      <%= item.product.description %>
+    </p>
+      <div class="text-black-500">
+      <% for(let i=1; i<=5; i++){ %>
+      <% if(i <= item.product.rating){ %>
+      ⭐
+      <% } else { %>
+      ☆
+     <% } %>
+    <% } %>
+      </div>
+
+    <div>
+      <% if(item.product.stock > 0){ %>
+        <span class="text-green-600">In Stock</span>
+      <% } else { %>
+        <span class="text-red-600">Out of Stock</span>
+      <% } %>
+    </div>
+
 
         <p><b>Price:</b> ₹<%= item.product.price %></p>
         <p><b>Discount:</b> ₹<%= item.product.discount %></p>
         <p><b>Quantity:</b> <%= item.quantity %></p>
 
-        <!-- 🔥 REMOVE BUTTON -->
+        
         <a href="/cart/remove/<%= item.product._id %>"
            onclick="return confirm('Remove this item?')"
            class="text-red-500 mt-3 hover:underline">
@@ -57,7 +101,7 @@
 
     </div>
 
-    <% }) %>  <!-- ✅ CORRECT LOOP CLOSING -->
+    <% }) %> 
 
   </div>
 
@@ -103,5 +147,5 @@
   </div>
 
 </div>
-
+ <% } %>
 <%- include('./partials/footer') %>

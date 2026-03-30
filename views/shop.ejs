@@ -79,10 +79,14 @@
               <% } %>
             </div>
 
-            <a class="w-7 h-7 flex items-center justify-center rounded-full bg-white hover:bg-gray-200"
-               href="/addtocart/<%=product._id%>">
-              +
-            </a>
+               <a href="/addtocart/<%= product._id %>"
+             class="flex items-center justify-center gap-2 px-4 py-2 rounded-lg 
+          bg-[#2F3E34] hover:bg-[#243129]
+          text-white text-sm font-medium 
+          transition duration-200">
+
+          🛒 Add to Cart
+          </a>
 
           </div>
 

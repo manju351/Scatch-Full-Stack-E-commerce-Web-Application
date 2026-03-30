@@ -3,7 +3,7 @@ const express=require('express');
 const app=express();
 const cookieParser= require('cookie-parser');
 const path=require('path');
-const ownersRouter= require("./routes/ownersRouter");
+const adminRouter= require("./routes/adminRouter");
 const usersRouter= require('./routes/usersRouter');
 const productsRouter= require('./routes/productsRouter');
 const indexRouter=require('./routes/index');
@@ -13,7 +13,7 @@ const flash= require('connect-flash');
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname,'public')));
+app.use(express.static(path.join(__dirname,'public'))); 
 app.use(
     expressSession({
         resave: false,
@@ -24,8 +24,10 @@ app.use(
 app.use(flash());
 app.set('view engine','ejs');
 
-app.use("/owners",ownersRouter);
+app.use('/admin',adminRouter);
 app.use("/users",usersRouter);
 app.use("/products",productsRouter);
 app.use("/",indexRouter);
-app.listen(3000);
+app.listen(3000, '0.0.0.0', () => {
+  console.log("Server running");
+});
