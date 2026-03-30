@@ -119,7 +119,10 @@ npm start
 
 ## 📸 Screenshots
 
-*Add screenshots of your project here (Home page, Admin panel, Orders, etc.)*
+### 🏠 Home Page ![Home](./public/images/screenshots/home.png) 
+### 🛍 Products Page ![Products](./public/images/screenshots/products.png) 
+### 📦 Orders Page ![Orders](./public/images/screenshots/orders.png)
+### 🧑‍💻 Admin Dashboard ![Admin](./public/images/screenshots/admin.png)
 
 ---
 
