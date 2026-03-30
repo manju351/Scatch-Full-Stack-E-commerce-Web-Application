@@ -120,9 +120,10 @@ npm start
 ## 📸 Screenshots
 
 ### 🏠 Home Page ![Home](./public/images/screenshots/home.png) 
-### 🛍 Products Page ![Products](./public/images/screenshots/products.png) 
-### 📦 Orders Page ![Orders](./public/images/screenshots/orders.png)
-### 🧑‍💻 Admin Dashboard ![Admin](./public/images/screenshots/admin.png)
+### 🛍 Products Page ![Products](./public/images/screenshots/product.png) 
+### 📦 Orders Page ![Orders](./public/images/screenshots/order.png)
+### 🧑‍💻 Admin Dashboard ![Admin](./public/images/screenshots/admin-dashboard.png)
+### 🛒 Cart Page ![Cart](./public/images/screenshots/cart.png)
 
 ---
 
