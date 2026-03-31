@@ -4,7 +4,7 @@ const isloggedin= require('../middlewares/isLoggedIn');
 const productModel=require('../models/product-model');
 const userModel= require('../models/user-model');
 const orderModel = require('../models/order-model');
-const BASE_URL = "http://10.14.12.216:3000/";
+const BASE_URL = "https://scatch-full-stack-e-commerce-web.onrender.com/";
 const sendMail = require("../utils/sendMail");
 const { orderPlacedEmail } = require("../utils/emailTemplates");
 function generateOrderId() {
