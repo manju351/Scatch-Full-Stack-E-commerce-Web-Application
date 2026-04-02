@@ -10,47 +10,43 @@ module.exports.registerUser = async (req, res) => {
    try {
       let { password, email, fullname } = req.body;
 
-      let user = await userModel.findOne({ email });
-      if (user) {
-         req.flash("error", "you already have account, please login");
+      let existingUser = await userModel.findOne({ email });
+      if (existingUser) {
+         req.flash("error", "Already registered, please login");
          return res.redirect('/');
       }
 
-      bcrypt.genSalt(10, (err, salt) => {
-         bcrypt.hash(password, salt, async (err, hash) => {
-            if (err) return res.send(err.message);
+      const hash = await bcrypt.hash(password, 10);
 
-            let user = await userModel.create({
-               email,
-               password: hash,
-               fullname,
-            });
-
-            let token = generateToken(user);
-            res.cookie("token", token);
-
-            console.log("UserCreatedSuccessfully");
-
-            try {
-               await sendMail({
-                  to: user.email,
-                  subject: "Welcome to Scatch 🎉",
-                  html: welcomeEmail(user.fullname)
-               });
-            } catch (mailErr) {
-               console.log("Email failed:", mailErr.message);
-            }
-
-            req.flash("created", "Your Account has been created");
-            res.redirect('/');
-         });
+      let user = await userModel.create({
+         email,
+         password: hash,
+         fullname,
       });
 
+      let token = generateToken(user);
+      res.cookie("token", token);
+
+      console.log("UserCreatedSuccessfully");
+
+      // ✅ send response immediately
+      res.redirect('/');
+
+      // ✅ send email in background
+      sendMail({
+         to: user.email,
+         subject: "Welcome to Scatch 🎉",
+         html: welcomeEmail(user.fullname)
+      }).catch(err => console.log("Mail error:", err));
+
    } catch (err) {
-      res.send(err.message);
+      console.log(err);
+      res.send("Something went wrong");
    }
 };
 
+
+          
 module.exports.loginUser = async (req, res) => {
    let { email, password } = req.body;
 
