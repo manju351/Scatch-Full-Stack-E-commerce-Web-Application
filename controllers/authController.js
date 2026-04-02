@@ -29,15 +29,16 @@ module.exports.registerUser = async (req, res) => {
 
       console.log("UserCreatedSuccessfully");
 
-      // ✅ send response immediately
-      res.redirect('/');
+      res.redirect('/'); // send response immediately
 
-      // ✅ send email in background
-      sendMail({
-         to: user.email,
-         subject: "Welcome to Scatch 🎉",
-         html: welcomeEmail(user.fullname)
-      }).catch(err => console.log("Mail error:", err));
+     // ✅ Fire-and-forget email (IMPORTANT)
+     setImmediate(() => {
+     sendMail({
+     to: user.email,
+     subject: "Welcome to Scatch 🎉",
+     html: `<h1>Welcome ${user.fullname}</h1>`
+     }).catch(err => console.log(err));
+      });
 
    } catch (err) {
       console.log(err);
