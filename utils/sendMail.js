@@ -3,7 +3,7 @@ const nodemailer = require("nodemailer");
 // Debug (remove after testing)
 console.log("EMAIL_USER:", process.env.EMAIL_USER ? "Loaded ✅" : "Missing ❌");
 console.log("EMAIL_PASS:", process.env.EMAIL_PASS ? "Loaded ✅" : "Missing ❌");
-
+console.log("📨 Attempting to send mail...");
 const createTransporter = () => {
   return nodemailer.createTransport({
     service: "gmail",
