@@ -1,9 +1,47 @@
 // 1️⃣ Signup Email
 exports.welcomeEmail = (name) => `
-  <h2>Welcome to Scatch 🎉</h2>
-  <p>Hi ${name},</p>
-  <p>Your account has been created successfully.</p>
-  <p>Start shopping now 🛍️</p>
+  <div style="font-family: Arial, sans-serif; background-color: #f4f6f8; padding: 20px;">
+    
+    <div style="max-width: 600px; margin: auto; background: #ffffff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+      
+      <!-- Header -->
+      <div style="background: #4f46e5; color: white; padding: 20px; text-align: center;">
+        <h1 style="margin: 0;">🛒 Scatch Store</h1>
+        <p style="margin: 5px 0 0;">Welcome to the future of shopping</p>
+      </div>
+
+      <!-- Body -->
+      <div style="padding: 30px;">
+        <h2 style="color: #333;">Welcome, ${name} 👋</h2>
+        
+        <p style="color: #555; font-size: 15px;">
+          Your account has been successfully created. We're excited to have you on board!
+        </p>
+
+        <p style="color: #555; font-size: 15px;">
+          Explore products, discover deals, and enjoy seamless shopping with Scatch.
+        </p>
+
+        <!-- Button -->
+        <div style="text-align: center; margin: 30px 0;">
+          <a href="https://scatch-full-stack-e-commerce-web.onrender.com"
+             style="background: #4f46e5; color: white; padding: 12px 25px; text-decoration: none; border-radius: 6px; font-weight: bold;">
+            Start Shopping 🛍️
+          </a>
+        </div>
+
+        <p style="color: #777; font-size: 13px;">
+          If you have any questions, feel free to reply to this email.
+        </p>
+      </div>
+
+      <!-- Footer -->
+      <div style="background: #f1f1f1; padding: 15px; text-align: center; font-size: 12px; color: #777;">
+        © 2026 Scatch Store. All rights reserved.
+      </div>
+
+    </div>
+  </div>
 `;
 
 exports.orderPlacedEmail = (order) => {
