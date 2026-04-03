@@ -15,7 +15,7 @@ exports.orderPlacedEmail = (order) => {
 
     productHTML += `
       <div style="display:flex; gap:10px; margin-bottom:15px;">
-        <img src="http://10.14.12.216:3000/product/${product._id}/image" width="60" />
+        <img src="https://scatch-full-stack-e-commerce-web.onrender.com/product/${product._id}/image" width="60" />
         
         <div>
           <p><b>${product.name}</b></p>
@@ -80,7 +80,7 @@ exports.orderStatusEmail = (order) => {
     productHTML += `
       <div style="display:flex; gap:10px; margin-bottom:15px; border-bottom:1px solid #eee; padding-bottom:10px;">
         
-        <img src="http://10.14.12.216:3000/product/${product._id}/image" width="60" />
+        <img src="https://scatch-full-stack-e-commerce-web.onrender.com/product/${product._id}/image" width="60" />
 
         <div>
           <p style="margin:0;"><b>${product.name}</b></p>
