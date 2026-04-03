@@ -46,7 +46,7 @@ router.post('/place-order', isloggedin, async (req, res) => {
 
      mode: 'payment',
 
-     // ✅ ADD PLATFORM FEE HERE
+     //platform fee here
      shipping_options: [
        {
          shipping_rate_data: {
@@ -63,7 +63,7 @@ router.post('/place-order', isloggedin, async (req, res) => {
            success_url: `${BASE_URL}success?session_id={CHECKOUT_SESSION_ID}`,
            cancel_url: `${BASE_URL}/cancel`,
 
-        // 🔥 store address temporarily
+        //  store address temporarily
         metadata: {
             name,
             phone,
