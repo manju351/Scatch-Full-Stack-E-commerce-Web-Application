@@ -53,7 +53,7 @@ module.exports.loginUser = async (req, res) => {
 
    let user = await userModel.findOne({ email });
    if (!user) {
-      req.flash("error", "Email or Password incorrect");
+      req.flash("error", "Account doesn't exist,Please create your account");
       return res.redirect('/');
    }
 
