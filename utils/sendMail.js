@@ -1,24 +1,39 @@
-const nodemailer = require("nodemailer");
-console.log("EMAIL_USER:", process.env.EMAIL_USER);
-console.log("EMAIL_PASS:", process.env.EMAIL_PASS);
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS
-  }
-});
+const SibApiV3Sdk = require("sib-api-v3-sdk");
+
+// Debug
+console.log("BREVO_API_KEY:", process.env.BREVO_API_KEY ? "Loaded ✅" : "Missing ❌");
+
+const client = SibApiV3Sdk.ApiClient.instance;
+const apiKey = client.authentications["api-key"];
+
+apiKey.apiKey = process.env.BREVO_API_KEY;
 
 const sendMail = async ({ to, subject, html }) => {
+  console.log("📨 Sending mail via Brevo...");
+
   try {
-    await transporter.sendMail({
-      from: `"Scatch Store 🛒" <${process.env.EMAIL_USER}>`,
-      to,
-      subject,
-      html
-    });
+    const apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
+
+    const sendSmtpEmail = {
+      sender: {
+        email: process.env.EMAIL_USER,
+        name: "Scatch Store 🛒"
+      },
+      to: [
+        {
+          email: to
+        }
+      ],
+      subject: subject,
+      htmlContent: html
+    };
+
+    const data = await apiInstance.sendTransacEmail(sendSmtpEmail);
+
+    console.log("✅ Mail sent successfully:", data.messageId);
+
   } catch (err) {
-    console.log("Email error:", err.message);
+    console.log("❌ BREVO ERROR:", err.response?.body || err.message);
   }
 };
 
