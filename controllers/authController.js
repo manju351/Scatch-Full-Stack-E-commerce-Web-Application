@@ -12,7 +12,7 @@ module.exports.registerUser = async (req, res) => {
 
       let existingUser = await userModel.findOne({ email });
       if (existingUser) {
-         req.flash("error", "Already registered, please login");
+         req.flash("created", "Already registered, please login");
          return res.redirect('/');
       }
 
@@ -27,7 +27,7 @@ module.exports.registerUser = async (req, res) => {
       let token = generateToken(user);
       res.cookie("token", token);
 
-       req.flash("error","Account has been created successfully,Please Login")
+      req.flash("created","Account has been created successfully,Please Login")
 
       res.redirect('/'); // send response immediately
 
