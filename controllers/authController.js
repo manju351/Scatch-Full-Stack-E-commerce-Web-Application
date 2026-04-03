@@ -27,7 +27,7 @@ module.exports.registerUser = async (req, res) => {
       let token = generateToken(user);
       res.cookie("token", token);
 
-      console.log("UserCreatedSuccessfully");
+       req.flash("error","Account has been created successfully,Please Login")
 
       res.redirect('/'); // send response immediately
 
