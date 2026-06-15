@@ -32,13 +32,14 @@ module.exports.registerUser = async (req, res) => {
       res.redirect('/'); // send response immediately
 
      // ✅ Fire-and-forget email (IMPORTANT)
-     setImmediate(() => {
-     sendMail({
-     to: user.email,
-     subject: "Welcome to Scatch 🎉",
-     html: `<h1>Welcome ${user.fullname}</h1>`
-     }).catch(err => console.log(err));
-      });
+      console.log(welcomeEmail(user.fullname));
+    setImmediate(() => {
+  sendMail({
+    to: user.email,
+    subject: "Welcome to Scatch 🎉",
+    html: welcomeEmail(user.fullname)
+  }).catch(err => console.log(err));
+});
 
    } catch (err) {
       console.log(err);
