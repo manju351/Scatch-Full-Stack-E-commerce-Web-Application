@@ -1,47 +1,173 @@
 // 1️⃣ Signup Email
 exports.welcomeEmail = (name) => `
-  <div style="font-family: Arial, sans-serif; background-color: #f4f6f8; padding: 20px;">
-    
-    <div style="max-width: 600px; margin: auto; background: #ffffff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
-      
-      <!-- Header -->
-      <div style="background: #4f46e5; color: white; padding: 20px; text-align: center;">
-        <h1 style="margin: 0;">🛒 Scatch Store</h1>
-        <p style="margin: 5px 0 0;">Welcome to the future of shopping</p>
-      </div>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+</head>
 
-      <!-- Body -->
-      <div style="padding: 30px;">
-        <h2 style="color: #333;">Welcome, ${name} 👋</h2>
-        
-        <p style="color: #555; font-size: 15px;">
-          Your account has been successfully created. We're excited to have you on board!
-        </p>
+<body style="
+  margin:0;
+  padding:0;
+  background:#f4f6f8;
+  font-family:Arial,sans-serif;
+">
 
-        <p style="color: #555; font-size: 15px;">
-          Explore products, discover deals, and enjoy seamless shopping with Scatch.
-        </p>
+<table width="100%" cellpadding="0" cellspacing="0">
+<tr>
+<td align="center">
 
-        <!-- Button -->
-        <div style="text-align: center; margin: 30px 0;">
-          <a href="https://scatch-full-stack-e-commerce-web.onrender.com"
-             style="background: #4f46e5; color: white; padding: 12px 25px; text-decoration: none; border-radius: 6px; font-weight: bold;">
-            Start Shopping 🛍️
-          </a>
-        </div>
+<table width="650" cellpadding="0" cellspacing="0"
+style="
+background:white;
+border-radius:12px;
+overflow:hidden;
+box-shadow:0 5px 20px rgba(0,0,0,.08);
+">
 
-        <p style="color: #777; font-size: 13px;">
-          If you have any questions, feel free to reply to this email.
-        </p>
-      </div>
+<!-- HERO -->
 
-      <!-- Footer -->
-      <div style="background: #f1f1f1; padding: 15px; text-align: center; font-size: 12px; color: #777;">
-        © 2026 Scatch Store. All rights reserved.
-      </div>
+<tr>
+<td style="
+background:linear-gradient(135deg,#4f46e5,#7c3aed);
+padding:50px 30px;
+text-align:center;
+color:white;
+">
 
-    </div>
-  </div>
+<h1 style="margin:0;font-size:36px;">
+🛒 Scatch Store
+</h1>
+
+<p style="
+margin-top:15px;
+font-size:18px;
+opacity:.9;
+">
+Premium Shopping Experience
+</p>
+
+</td>
+</tr>
+
+<!-- CONTENT -->
+
+<tr>
+<td style="padding:40px;">
+
+<h2 style="
+margin-top:0;
+color:#111827;
+">
+Welcome, ${name} 👋
+</h2>
+
+<p style="
+font-size:16px;
+line-height:28px;
+color:#4b5563;
+">
+Thank you for joining Scatch Store.
+Your account has been successfully created and you're now part of our growing community.
+</p>
+
+<p style="
+font-size:16px;
+line-height:28px;
+color:#4b5563;
+">
+Explore premium products, exclusive offers,
+secure payments and lightning-fast delivery.
+</p>
+
+<!-- BUTTON -->
+
+<div style="text-align:center;margin:40px 0;">
+
+<a
+href="https://scatch-full-stack-e-commerce-web.onrender.com"
+style="
+background:#4f46e5;
+padding:16px 32px;
+color:white;
+text-decoration:none;
+border-radius:8px;
+font-size:16px;
+font-weight:bold;
+display:inline-block;
+">
+Start Shopping →
+</a>
+
+</div>
+
+</td>
+</tr>
+
+<!-- FEATURES -->
+
+<tr>
+<td style="
+padding:30px;
+background:#fafafa;
+">
+
+<table width="100%">
+<tr>
+
+<td align="center">
+<h3>🚚</h3>
+<p><b>Fast Delivery</b></p>
+</td>
+
+<td align="center">
+<h3>🔒</h3>
+<p><b>Secure Payments</b></p>
+</td>
+
+<td align="center">
+<h3>🎁</h3>
+<p><b>Exclusive Offers</b></p>
+</td>
+
+</tr>
+</table>
+
+</td>
+</tr>
+
+<!-- FOOTER -->
+
+<tr>
+<td style="
+padding:25px;
+text-align:center;
+background:#111827;
+color:#d1d5db;
+">
+
+<p style="margin:0;">
+Thank you for choosing Scatch Store ❤️
+</p>
+
+<p style="
+margin-top:10px;
+font-size:12px;
+">
+© 2026 Scatch Store. All Rights Reserved.
+</p>
+
+</td>
+</tr>
+
+</table>
+
+</td>
+</tr>
+</table>
+
+</body>
+</html>
 `;
 
 exports.orderPlacedEmail = (order) => {
