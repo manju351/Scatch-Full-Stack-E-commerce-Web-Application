@@ -27,7 +27,8 @@ const sendMail = async ({ to, subject, html }) => {
       subject: subject,
       htmlContent: html
     };
-
+    console.log("HTML CONTENT:");
+    console.log(html);
     const data = await apiInstance.sendTransacEmail(sendSmtpEmail);
 
     console.log("✅ Mail sent successfully:", data.messageId);
